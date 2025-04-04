@@ -1,0 +1,272 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --gold-primary: #FFD700;  /* Classic gold */
+  --gold-secondary: #F1C232; /* Slightly darker gold */
+  --gold-light: #FFF2CC;    /* Light gold */
+  --gold-accent: #DAA520;   /* Goldenrod */
+  --gold-shimmer: rgba(255, 215, 0, 0.15); /* Transparent gold for effects */
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  input:focus ~ label,
+  input:not(:placeholder-shown) ~ label {
+    @apply -translate-y-2 text-xsmall-regular;
+  }
+
+  input:focus ~ label {
+    @apply left-0;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    border: 1px solid #212121;
+    -webkit-text-fill-color: #212121;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+  
+  /* Sparkle animation classes */
+  .sparkle-effect {
+    position: relative;
+  }
+  
+  .sparkle-effect::before,
+  .sparkle-effect::after {
+    content: '';
+    position: absolute;
+    background: var(--gold-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    box-shadow: 0 0 10px 2px var(--gold-primary);
+  }
+  
+  .sparkle-effect::before {
+    width: 8px;
+    height: 8px;
+    top: -5px;
+    left: 10%;
+  }
+  
+  .sparkle-effect::after {
+    width: 12px;
+    height: 12px;
+    top: 10%;
+    right: -5px;
+  }
+  
+  .sparkle-effect:hover::before {
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+  
+  .sparkle-effect:hover::after {
+    animation: sparkle 2s ease-in-out 0.3s infinite;
+  }
+  
+  /* Gold shimmer effect */
+  .gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      var(--gold-shimmer) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2.5s linear infinite;
+  }
+  
+  /* Gold hover effect */
+  .gold-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .gold-hover:hover {
+    box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.3);
+  }
+  
+  /* Gold animated border */
+  .gold-border {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .gold-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold-primary);
+    transition: width 0.4s ease;
+  }
+  
+  .gold-border:hover::after {
+    width: 100%;
+  }
+  
+  /* Animations */
+  @keyframes sparkle {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Gold gradient text */
+  .gold-gradient-text {
+    background: linear-gradient(to right, var(--gold-accent), var(--gold-primary), var(--gold-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+  
+  /* Gold button hover */
+  .gold-button-hover:hover {
+    background: linear-gradient(135deg, var(--gold-primary), var(--gold-accent));
+    color: #FFF;
+    border-color: var(--gold-accent);
+  }
+}
+
+@layer components {
+  .content-container {
+    @apply max-w-[1440px] w-full mx-auto px-6;
+  }
+
+  .contrast-btn {
+    @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
+  }
+  
+  /* Custom button styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-pisces-primary text-white rounded-lg hover:bg-pisces-accent transition-colors duration-300 ease-in-out shadow-md hover:shadow-lg active:scale-95 transform transition-transform;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-white text-pisces-primary border border-pisces-primary rounded-lg hover:bg-pisces-light transition-colors duration-300 ease-in-out shadow-sm hover:shadow-md active:scale-95 transform transition-transform;
+  }
+  
+  /* Gold button variants */
+  .btn-gold {
+    @apply px-6 py-3 bg-white text-black border border-amber-400 rounded-lg hover:bg-gradient-to-r hover:from-amber-200 hover:to-amber-400 transition-colors duration-300 ease-in-out shadow-sm hover:shadow-md active:scale-95 transform transition-transform;
+  }
+
+  .btn-gold-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-amber-400 to-yellow-500 text-white rounded-lg hover:from-amber-500 hover:to-yellow-600 transition-colors duration-300 ease-in-out shadow-md hover:shadow-lg active:scale-95 transform transition-transform;
+  }
+  
+  .btn-outline {
+    @apply px-4 py-2 border border-pisces-primary text-pisces-primary rounded-lg hover:bg-pisces-light hover:text-pisces-accent transition-all duration-300;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 hover:border-pisces-secondary;
+  }
+  
+  /* Gold card hover */
+  .gold-card-hover {
+    @apply transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 hover:border-amber-400;
+  }
+
+  .text-xsmall-regular {
+    @apply text-[10px] leading-4 font-normal;
+  }
+
+  .text-small-regular {
+    @apply text-xs leading-5 font-normal;
+  }
+
+  .text-small-semi {
+    @apply text-xs leading-5 font-semibold;
+  }
+
+  .text-base-regular {
+    @apply text-sm leading-6 font-normal;
+  }
+
+  .text-base-semi {
+    @apply text-sm leading-6 font-semibold;
+  }
+
+  .text-large-regular {
+    @apply text-base leading-6 font-normal;
+  }
+
+  .text-large-semi {
+    @apply text-base leading-6 font-semibold;
+  }
+
+  .text-xl-regular {
+    @apply text-2xl leading-[36px] font-normal;
+  }
+
+  .text-xl-semi {
+    @apply text-2xl leading-[36px] font-semibold;
+  }
+
+  .text-2xl-regular {
+    @apply text-[30px] leading-[48px] font-normal;
+  }
+
+  .text-2xl-semi {
+    @apply text-[30px] leading-[48px] font-semibold;
+  }
+
+  .text-3xl-regular {
+    @apply text-[32px] leading-[44px] font-normal;
+  }
+
+  .text-3xl-semi {
+    @apply text-[32px] leading-[44px] font-semibold;
+  }
+}
