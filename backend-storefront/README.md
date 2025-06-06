@@ -9,11 +9,11 @@
 </p>
 
 <h1 align="center">
-  Medusa Next.js Starter Template
+  Pisces Shirts Storefront
 </h1>
 
 <p align="center">
-Combine Medusa's modules for your commerce backend with the newest Next.js 15 features for a performant storefront.</p>
+A production-ready storefront powered by Medusa and Next.js for selling high-quality shirts.</p>
 
 <p align="center">
   <a href="https://github.com/medusajs/medusa/blob/master/CONTRIBUTING.md">
