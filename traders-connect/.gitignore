@@ -1,0 +1,13 @@
+**/node_modules/
+*.log
+.env
+!.env.example
+web/.env.local
+!web/.env.local.example
+server/data.sqlite
+web/.next/
+
+package-lock.json
+
+# Mac
+.DS_Store
